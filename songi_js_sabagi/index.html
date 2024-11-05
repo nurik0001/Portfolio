@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" ></script>
+</head>
+<body>
+    
+    <header>
+        <img src="https://codetheweb.blog/assets/img/icon2.png">
+        <div class="langs">
+            <button onclick="barliqTextterdiAudar('kk')">Каз</button>
+            <button onclick="barliqTextterdiAudar('ru')">Рус</button>
+        </div>
+         <nav>
+             <ul>
+                 <li><a href="login.html" class="lang" lang-key="loghome">Login</a></li>
+                 
+             </ul>
+         </nav>
+     </header>
+    <div class="container">  <table id="bit-table">
+        <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Возраст</th>
+                <th>Телефон</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table></div>
+    
+
+<div class="table-input">
+    <input type="text" id="jana-name" placeholder="Введите имя">
+    <input type="text" id="jana-secondname" placeholder="Введите фамилию">
+    <input type="number" id="jana-jasy" placeholder="Введите возраст">
+    <input type="text" id="jana-tel" placeholder="Введите телефон">
+    <button id="bir-btn" onclick="knopkaBasilganda()">Сохранить</button>
+</div>
+  
+<script>
+
+
+// таблцы
+     let users = [
+            { name: "Берик", secondName: "Серикулы", age: 45, phoneNumber: "123123412341" },
+            { name: "Сакен", secondName: "Макенулы", age: 45, phoneNumber: "123123712341" },
+            { name: "Эрик", secondName: "Жигерулы", age: 45, phoneNumber: "123123442341" },
+            { name: "Баглан", secondName: "Серикулы", age: 45, phoneNumber: "123123412341" },
+            { name: "Ерлан", secondName: "Бериш", age: 45, phoneNumber: "123123412341" }
+        ];
+
+        let currentEditIndex = null; 
+
+        function oshir(index) {
+            users.splice(index, 1);
+            tableBodydiToltiru(users);
+        }
+
+        function knopkaBasilganda() {
+            const janaName = document.getElementById('jana-name').value;
+            const janaSecondName = document.getElementById('jana-secondname').value;
+            const janaAge = parseInt(document.getElementById('jana-jasy').value);
+            const janaTel = document.getElementById('jana-tel').value;
+
+            if (currentEditIndex !== null) {
+                
+                users.currentEditIndex = { name: janaName, secondName: janaSecondName, age: janaAge, phoneNumber: janaTel };
+                currentEditIndex = null; 
+            } else {
+                
+                if (janaName && janaSecondName && !isNaN(janaAge) && janaTel) {
+                    const janaObj = { name: janaName, secondName: janaSecondName, age: janaAge, phoneNumber: janaTel };
+                    users.push(janaObj);
+                } else {
+                    alert("Все поля должны быть заполнены корректно!");
+                    return;
+                }
+            }
+            clearInputs();
+            tableBodydiToltiru(users);
+        }
+
+        function clearInputs() {
+            document.getElementById('jana-name').value = '';
+            document.getElementById('jana-secondname').value = '';
+            document.getElementById('jana-jasy').value = '';
+            document.getElementById('jana-tel').value = '';
+            document.getElementById('bir-btn').innerText = 'Сохранить'; 
+        }
+
+        function tableBodydiToltiru(data) {
+            const tableBody_ = document.getElementById('tableBody');
+            tableBody_.innerHTML = ''; 
+            data.forEach((user, index) => {
+                tableBody_.innerHTML += `<tr>
+                    <td>
+                        <span class="view">${user.name}</span>
+                        <input type="text" class="edit-input" value="${user.name}" data-field="name">
+                    </td>
+                    <td>
+                        <span class="view">${user.secondName}</span>
+                        <input type="text" class="edit-input" value="${user.secondName}" data-field="secondName">
+                    </td>
+                    <td>
+                        <span class="view">${user.age}</span>
+                        <input type="number" class="edit-input" value="${user.age}" data-field="age">
+                    </td>
+                    <td>
+                        <span class="view">${user.phoneNumber}</span>
+                        <input type="text" class="edit-input" value="${user.phoneNumber}" data-field="phoneNumber">
+                    </td>
+                    <td>
+                        <button onclick="oshir(${index})">Удалить</button>
+                        <button onclick="startEdit(${index})">Изменить</button>
+                        <button onclick="saveEdit(${index})" style="display:none;">Сохранить</button>
+                    </td>
+                </tr>`;
+            });
+        }
+
+        function startEdit(index) {
+            currentEditIndex = index; 
+            const row = document.querySelector(`#tableBody tr:nth-child(${index + 1})`);
+            const inputs = row.querySelectorAll('.edit-input');
+            const views = row.querySelectorAll('.view');
+            const saveButton = row.querySelector('button:nth-child(3)');
+
+            inputs.forEach(input => input.style.display = 'inline');
+            views.forEach(view => view.style.display = 'none');
+            saveButton.style.display = 'inline';
+            document.getElementById('bir-btn').style.display = 'none'; 
+        }
+
+        function saveEdit(index) {
+            const row = document.querySelector(`#tableBody tr:nth-child(${index + 1})`);
+            const inputs = row.querySelectorAll('.edit-input');
+            const views = row.querySelectorAll('.view');
+            const saveButton = row.querySelector('button:nth-child(3)');
+
+            inputs.forEach(input => {
+                const field = input.getAttribute('data-field');
+                users[index][field] = input.value; 
+            });
+
+            inputs.forEach(input => input.style.display = 'none'); 
+            views.forEach((view, i) => {
+                view.innerText = inputs[i].value; 
+                view.style.display = 'inline'; 
+            });
+            saveButton.style.display = 'none';  
+            document.getElementById('bir-btn').style.display = 'inline';
+
+            tableBodydiToltiru(users); 
+        }
+
+        tableBodydiToltiru(users);
+</script>
+
+</body>
+</html>

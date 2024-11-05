@@ -1,0 +1,81 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline; /* Выравнивание по горизонтали */
+    margin: 0 10px; /* Отступы между элементами */
+}
+
+nav ul li a {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: #3498db; /* Цвет текста для ссылок */
+    padding: 10px 15px; /* Внутренние отступы */
+    border-radius: 5px; /* Скругление углов */
+    transition: color 0.3s, background-color 0.3s; /* Плавные переходы */
+}
+
+nav ul li a:hover {
+    color: #fff; /* Белый цвет текста при наведении */
+    background-color: #2980b9; /* Темно-синий фон при наведении */
+}
+
+nav ul li a.active {
+    color: #fff; /* Белый цвет текста для активной ссылки */
+    background-color: #3498db; /* Синий фон для активной ссылки */
+}
+
+
+
+
+
+section {
+    padding: 20px;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.project {
+    margin: 10px;
+    border: 1px solid #ccc;
+    background: #fff;
+    padding: 10px;
+    width: 300px;
+}
+
+.project img {
+    max-width: 100%;
+}
+
+.content-section {
+    flex: 1; /* Позволяет секциям занимать оставшееся пространство */
+    padding: 20px;
+}
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}

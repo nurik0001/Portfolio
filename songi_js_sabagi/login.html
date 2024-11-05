@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <title>Register</title>
+</head>
+
+<body>
+    <header>
+        <img src="https://codetheweb.blog/assets/img/icon2.png">
+        <div class="langs">
+            <button onclick="barliqTextterdiAudar('kk')">Каз</button>
+            <button onclick="barliqTextterdiAudar('ru')">Рус</button>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <form action="" id="form" onsubmit="return validateForm()"> <!-- Добавлен обработчик отправки формы -->
+            <div style="display: flex; flex-direction: row">
+                <h1 id="loginTabHeader" onclick="KKK('login')" class="lang" lang-key="kiru">Login</h1>
+                <h1 id="regTabHeader" onclick="KKK('register')" class="lang" lang-key="tirkeu">Registration</h1>
+            </div>
+            
+            <div id="registerContainer" style="display: none;"> <!-- Уникальный ID для регистрации -->
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username">
+                    <div class="error"></div>
+                </div>
+                <div class="input-group">
+                    <label for="registerEmail">Email</label> <!-- Изменён ID на уникальный -->
+                    <input type="text" id="registerEmail" name="email">
+                    <div class="error"></div>
+                </div>
+                <div class="input-group">
+                    <label for="registerPassword">Password</label> <!-- Изменён ID на уникальный -->
+                    <input type="password" id="registerPassword" name="password">
+                    <div class="error"></div>
+                </div>
+                <div class="input-group">
+                    <label for="cpassword">Confirm Password</label>
+                    <input type="password" id="cpassword" name="cpassword">
+                    <div class="error"></div>
+                </div>
+                <button type="submit">Register</button>
+            </div>
+
+            <div id="loginContainer" style="display: block;"> <!-- Уникальный ID для логина -->
+                <div class="input-group">
+                    <label for="loginEmail">Email</label> <!-- Изменён ID на уникальный -->
+                    <input type="text" id="loginEmail" name="email">
+                    <div class="error"></div>
+                </div>
+                <div class="input-group">
+                    <label for="loginPassword">Password</label> <!-- Изменён ID на уникальный -->
+                    <input type="password" id="loginPassword" name="password">
+                    <div class="error"></div>
+                </div>
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        let sozder = {
+            kk: {
+                basty: "Басты бет",
+                suraktar: "Сұрақтар",
+                contact: "Контактілер",
+                kiru: "Кіру",
+                tirkeu: "Тіркеу",
+                logjiberu: "Жіберу",
+                regjiberu: "Жіберу",
+                name: "Атын жазыңыз"
+            },
+            ru: {
+                basty: "Главная",
+                suraktar: "Вопросы-ответы",
+                contact: "Контакты",
+                kiru: "Вход",
+                tirkeu: "Регистрация",
+                logjiberu: "Отправить",
+                regjiberu: "Отправить",
+            },
+        };
+
+        function barliqTextterdiAudar(tandalganTil) {
+            var barliqAudaruKerekElementter = document.getElementsByClassName("lang");
+            for (let i = 0; i < barliqAudaruKerekElementter.length; i++) {
+                const element = barliqAudaruKerekElementter[i];
+                var elementLangKey = element.getAttribute("lang-key");
+                if (sozder[tandalganTil][elementLangKey]) {
+                    element.innerHTML = sozder[tandalganTil][elementLangKey];
+                }
+            }
+
+            // Обновление плейсхолдеров
+            const placeholders = document.querySelectorAll('input[placeholder]');
+            placeholders.forEach(input => {
+                const placeholderKey = input.placeholder;
+                if (sozder[tandalganTil][placeholderKey]) {
+                    input.placeholder = sozder[tandalganTil][placeholderKey];
+                }
+            });
+        }
+
+        const KKK = function (tabName) {
+            let loginTabHeader = document.getElementById("loginTabHeader");
+            let regTabHeader = document.getElementById("regTabHeader");
+            let registerContainer = document.getElementById("registerContainer");
+            let loginContainer = document.getElementById("loginContainer");
+            
+            if (tabName === 'login') {
+                loginTabHeader.style.color = "blue";
+                regTabHeader.style.color = "black";
+                loginContainer.style.display = "block";
+                registerContainer.style.display = "none";
+            } else if (tabName === 'register') {
+                loginTabHeader.style.color = "black";
+                regTabHeader.style.color = "blue";
+                loginContainer.style.display = "none";
+                registerContainer.style.display = "block";
+            }
+        };
+
+        function validateForm() {
+            // Пример простой валидации
+            const email = document.getElementById("loginEmail").value || document.getElementById("registerEmail").value;
+            const password = document.getElementById("loginPassword").value || document.getElementById("registerPassword").value;
+            
+            if (!email || !password) {
+                alert("Пожалуйста, заполните все поля.");
+                return false; // Останавливаем отправку формы
+            }
+            return true; // Если все в порядке
+        }
+    </script>
+</body>
+
+</html>

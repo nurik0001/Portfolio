@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мое Портфолио</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Nurdaulet Yusupov</h1>
+        <p>Front-end developer</p>
+        
+        <nav>
+            <ul>
+                <li><a href="#" class="nav-link" data-target="works">Мои работы</a></li>
+                <li><a href="#" class="nav-link" data-target="certificates">Сертификаты</a></li>
+                <li><a href="#" class="nav-link" data-target="education">Обучение</a></li>
+                <li><a href="#" class="nav-link" data-target="contacts">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="works" class="content-section">
+        <h2>Мои работы</h2>
+        <div class="gallery">
+            <div class="project">
+                <img src="Screenshot_5.png" alt="Проект 1">
+                <h3>Проект 1</h3>
+                <p>Сайт для онлайн школы</p>
+                <a href="Figma/index.html">Смотреть</a>
+            </div>
+            <div class="project">
+                <img src="Screenshot_4.png" alt="Проект 1">
+                <h3>Проект 2</h3>
+                <p> Слайдер с использыванием Javascript </p>
+                <a href="project1/index .html">Смотреть</a>
+            </div>
+            <div class="project">
+                <img src="Screenshot_2.png" alt="Проект 1">
+                <h3>Проект 3</h3>
+                <p>Переход с использыванием Javascript </p>
+                <a href="project2/index.html">Смотреть</a>
+            </div>
+            <div class="project">
+                <img src="Screenshot_1.png" alt="Проект 1">
+                <h3>Проект 4</h3>
+                <p>Поисковик с использыванием Javascript </p>
+                <a href="project3 seach/index.html">Смотреть</a>
+            </div>
+            <div class="project">
+                <img src="Screenshot_6.png" alt="Проект 1">
+                <h3>Проект 5</h3>
+                <p>Меню с использыванием Javascript </p>
+                <a href="Project 4/index.html">Смотреть</a>
+            </div>
+            <div class="project">
+                <img src="Screenshot_8.png" alt="Проект 1">
+                <h3>Проект 5</h3>
+                <p>Таблцы и форма с использыванием Javascript </p>
+                <a href="songi_js_sabagi/index.html">Смотреть</a>
+            </div>
+         
+        </div>
+    </section>
+
+    <section id="certificates" class="content-section" style="display: none;">
+        <h2>Сертификаты</h2>
+        <p>Курс Udemy</p>
+    </section>
+
+    <section id="education" class="content-section" style="display: none;">
+        <h2>Обучение</h2>
+        <p>Texh orda Astana hub</p>
+    </section>
+
+    <section id="contacts" class="content-section" style="display: none;">
+        <h2>Контакты</h2>
+        <p>Whatsapp +77763052116</p>
+        <p>Telegram +77763052116</p>
+        <p>Github www</p>
+        <p>Gmail nurdauletusupov@gmail.com</p>
+    </section>
+
+
+
+    <footer>
+        <p>© 2024 Nurdauler Yusupov. Все права защищены.</p>
+    </footer>
+
+
+
+
+
+
+
+    <script >
+       document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.content-section');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+
+            navLinks.forEach(nav => nav.classList.remove('active'));
+
+       
+            const targetId = link.getAttribute('data-target');
+            document.getElementById(targetId).style.display = 'block';
+
+       
+            link.classList.add('active');
+        });
+    });
+});
+
+    </script>
+</body>
+</html>

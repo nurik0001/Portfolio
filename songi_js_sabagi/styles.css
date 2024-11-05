@@ -1,0 +1,208 @@
+body{
+    background: rgb(34,193,195);
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(121,32,153,1) 86%);
+    background-attachment: fixed;
+    margin:0;
+    font-family: 'Poppins', sans-serif; 
+}
+
+#form{
+    width:400px;
+    margin:20vh auto 0 auto;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    padding:30px;
+}
+
+h1{
+    text-align: center;
+    color:#792099;
+}
+
+#form button{
+    background-color: #792099;
+    color:white;
+    border: 1px solid #792099;
+    border-radius: 5px;
+    padding:10px;
+    margin:20px 0px;
+    cursor:pointer;
+    font-size:20px;
+    width:100%;
+}
+
+.input-group{
+    display:flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.input-group input{
+    border-radius: 5px;
+    font-size:20px;
+    margin-top:5px;
+    padding:10px;
+    border:1px solid rgb(34,193,195) ;
+}
+
+.input-group input:focus{
+    outline:0;
+}
+
+.input-group .error{
+    color:rgb(242, 18, 18);
+    font-size:16px;
+    margin-top: 5px;
+}
+
+.input-group.success input{
+    border-color: #0cc477;
+}
+
+.input-group.error input{
+    border-color:rgb(206, 67, 67);
+}
+
+
+header img {
+    height: 80px;
+    margin-left: 40px;
+}
+
+
+header {
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 25px 0 black;
+}
+
+header * {
+    display: inline;
+}
+
+header li {
+    margin: 20px;
+}
+
+header li a {
+    color: black;
+    text-decoration: none;
+}
+/* Стили для таблицы */
+
+.container{
+    margin-top: 80px;
+}
+#bit-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+input.edit-input {
+    display: none;
+    width: 90%;
+    padding: 6px;
+    margin-top: 5px;
+}
+
+span.view {
+    display: inline;
+}
+
+button {
+    padding: 6px 12px;
+    margin: 5px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+button:active {
+    background-color: #1e7e34;
+}
+
+/* kaz-rus */
+.langs {
+    display: flex;
+    justify-content: center; /* Центрирует кнопки */
+    margin: 20px 0; /* Отступ сверху и снизу */
+}
+
+.langs button {
+    background-color: #792099; /* Фоновый цвет кнопок */
+    color: white; /* Цвет текста */
+    border: none; /* Убираем границу */
+    border-radius: 5px; /* Скругляем углы */
+    padding: 10px 20px; /* Отступы внутри кнопок */
+    margin: 0 10px; /* Отступы между кнопками */
+    font-size: 16px; /* Размер шрифта */
+    cursor: pointer; /* Курсор при наведении */
+    transition: background-color 0.3s; /* Плавный переход цвета фона */
+}
+
+.langs button:hover {
+    background-color: #5a1f6b; /* Цвет кнопки при наведении */
+}
+
+.langs button:focus {
+    outline: none; /* Убираем контур при фокусе */
+}
+
+.table-input {
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение */
+    gap: 10px; /* Расстояние между инпутами */
+    max-width: 300px; /* Максимальная ширина контейнера */
+    margin: 20px auto; /* Центрирование по горизонтали */
+}
+
+.table-input input {
+    padding: 10px; /* Отступ внутри инпутов */
+    border: 1px solid #ccc; /* Цвет рамки */
+    border-radius: 5px; /* Закругленные углы */
+    font-size: 16px; /* Размер шрифта */
+}
+
+.table-input button {
+    padding: 10px; /* Отступ внутри кнопки */
+    background-color: #007BFF; /* Цвет фона кнопки */
+    color: white; /* Цвет текста кнопки */
+    border: none; /* Убираем рамку */
+    border-radius: 5px; /* Закругленные углы кнопки */
+    cursor: pointer; /* Указатель при наведении */
+    font-size: 16px; /* Размер шрифта */
+}
+
+.table-input button:hover {
+    background-color: #0056b3; /* Цвет фона кнопки при наведении */
+}
+
